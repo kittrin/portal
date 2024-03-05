@@ -1,0 +1,147 @@
+ /* Base styles */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Example background color */
+    
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+  }
+
+  .header {   
+    background-color: #007bff; /* Example header color */
+    padding: 40px;
+    height: 20svh;    
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 20vw;
+    padding-right: 20vw;
+
+  }
+  .headerContent{
+   /* display: flex; 
+    flex-direction: row ;*/
+   /* justify-content: space-around;*/
+   display: flex;
+   justify-content: space-between;
+    
+  }
+  .headerBlockLeft{
+    margin-left: 0;
+  }
+  .headerText{
+    line-height: 1.2;
+  }    
+  p {
+    line-height: 0.2;
+  }
+  .headerBtnWrite{
+    margin-top: 2vh;
+    background-color: white;
+    border-radius: 25px;
+    border: 0px;
+    width:9vw;
+    height: 4vh;
+    color:#007bff;
+    font-size: 16px;
+  }
+  .HeaderQrCode{
+      width: 200px;
+  }
+
+  /*2*/
+  .services-section {
+    min-height: 35vh;
+    padding: 40px;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    color:#6B696B;
+  }
+  .serviceContent{
+    display: flex; 
+    flex-direction: column ;
+   }
+  .serviceBtns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .service {
+    text-decoration: none;
+    display: inline-block;
+    /*width: calc(20% - 20px); /* Three services per row minus margin */
+    width: 200px;
+    margin: 15px;
+    padding: 20px;
+    padding-left: 0px;
+    border-radius: 10px; /* Example radius */
+    background-color: #ffffff; /* Example service box color */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1); /* Example shadow */
+    color:black;
+    /* Flexbox centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Fixed height for demo purposes */
+    box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+    transition: transform .2s; /* Smooth scaling on hover */
+  }
+  .icImg{
+    margin-left: 10px;
+  }
+  .btnsText{
+    margin-left: 10px;
+    margin-top: 0px;
+    color:#6B696B;
+    font-size: 12px;
+  }
+  b{
+    color:black;
+    font-size: 18px;
+  }
+  .service:hover {
+      transform: scale(1.05); /* Slightly enlarge service boxes on hover */
+      cursor:pointer; 
+      box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+   }
+
+
+   .footer-section{
+    background-color: #EFEFEF;
+    padding: 40px;
+    color: #007bff;
+    height: 20vh;
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    position: absolute;
+    margin-bottom: 0px;
+ 
+   }
+   @media (max-width :1600px) {
+     .service{
+       width : calc(50% -20px);
+     }
+   }
+
+   @media (max-width :960px) {
+     .service{
+       width : calc(100% -20px);
+     }
+   }
+
+   @media (max-width :375px) {
+     .header{
+       padding :20 px ;
+     }
+
+     .services-section{
+       padding :20 px ;
+     }
+   }

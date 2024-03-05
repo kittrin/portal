@@ -1,0 +1,111 @@
+- База данных для сотрудников MySQl/MSSQL
+- Таблицы с CRUD для данных о сотрудниках 
+
+CREATE DATABASE HumanResources;
+
+Данные сотрудника:
+.id(авто)
+. ФИО
+. дата рождения
+. должность 
+. телефон рабочий
+. телефон личный
+. телефон внутренний
+. эл.почта
+. адресс
+
++ разбить данные сотрудника на таблицы:
+*Личные данные(Person):
+-id(автозаполнение)(фотка при загрузке на сервер автоматически переименовывается на id пользователя)
+-ФИО
+-дата рождения
+-личный телефон
+-эл. почта
+-личный адрес
+-статус(активный сотрудник/не активный для скрытия/отображения уволенных )
+
+CREATE TABLE Person
+(
+    idPerson INT PRIMARY KEY AUTO_INCREMENT,
+    firstName TEXT,
+    lastName TEXT,
+	patronymic TEXT,
+	dateOfBirth DATE,
+	personalPhoneNumber TEXT,
+	email TEXT,
+	personalAddress TEXT,
+	status BOOLEAN
+);
+
+
+*Данные сотрудника Employee зависимая таблица от Person
+*при удалении из табл. Person автоудаление из зависимых таблиц (Удаляеться и из Employee)
+-id из Person
+-номер отдела(подразделения)
+-должность
+-рабочий телефон
+-адрес рабочего места
+
+-дата принятия
+-дата увольнения
+-статус
+
+
+CREATE TABLE Employee
+(
+	idEmployee INT,
+	idworkingStructure INT,
+	postId INT,
+	officePhoneNumber TEXT,
+	workplaceAddress TEXT,	
+	
+	FOREIGN KEY (idEmployee)
+    REFERENCES Person (idPerson)
+    ON DELETE CASCADE
+);
+
+таблица рабочей структуры
+- id(авто)
+- наименование подразделения
+- телефонный номер
+- адрес 
+*в зависимых таблицах добавить переименование при изменении данных в этой таблице
+
+CREATE TABLE WorkingStructure 
+(
+	idWorkingStructure INT PRIMARY KEY AUTO_INCREMENT,
+	workingStructureName TEXT,
+	workingStructurePhoneNumber TEXT,
+	workingStructureAddress TEXT
+);
+
+Таблиц должностей WorkingPosts
+CREATE TABLE WorkingPosts 
+(
+	idWorkingPost INT PRIMARY KEY AUTO_INCREMENT,
+	workingPostName TEXT	 
+);
+
+Таблиц отдел-должность WorkingStructurePosts
+CREATE TABLE WorkingStructurePosts 
+(
+	idWorkingStructure INT,
+	idWorkingPost INT	 
+);
+таблица отпусков и больничных(Отсутствие на рабочем месте)
+- id записи(авто)
+- id сотрудник для загрузки фио
+- дата начала
+- дата конца 
+- комментарий
+
+CREATE TABLE Absence
+(
+	idAbsence INT PRIMARY KEY AUTO_INCREMENT,
+	idPerson INT,
+	absenceStart DATE,
+	absenceEnd DATE,
+	comment TEXT
+);
+
+ 
